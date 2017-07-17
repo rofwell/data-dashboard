@@ -1,0 +1,23 @@
+/* General */
+/* Graph */
+$graph-data-used-size: 500px;
+$graph-days-left-size: 540px;
+/* Colours */
+$c-background: #263344;
+
+$c-graph-data-used-fg: cyan;
+$c-graph-data-used-bg: #2d4556;
+
+$c-graph-days-left-fg: #fff568;
+$c-graph-days-left-bg: #4a3c18;
+
+$c-graph-content: $c-background;
+
+$c-loading: $c-background;
+
+/* Data Text */
+$data-heading-f-size: 128px;
+$data-heading-unit-f-size: $data-heading-f-size / 2; 
+
+$data-subheading-f-size: 56px;
+$data-subheading-unit-f-size: $data-subheading-f-size / 2;

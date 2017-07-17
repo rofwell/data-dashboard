@@ -1,0 +1,318 @@
+/* General */
+/* Graph */
+/* Colours */
+/* Data Text */
+@font-face {
+  src: url("../Ubuntu-Regular.ttf");
+  font-family: 'Ubuntu';
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+@keyframes onload-twist-clockwise {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes onload-twist-counterclockwise {
+  0% {
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fade-in-out {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: #263344;
+}
+
+.app .graph-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.app .graph-container .graph.data-used {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: #2d4556;
+  z-index: 5;
+  box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app .graph-container .graph.data-used .q {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  height: 500px;
+  border-radius: 100%;
+  width: 500px;
+  overflow: hidden;
+  /*         T     R     B     L */
+}
+
+.app .graph-container .graph.data-used .q:nth-of-type(1) {
+  clip: rect(0px, 500px, 250px, 250px);
+  z-index: 1;
+}
+
+.app .graph-container .graph.data-used .q:nth-of-type(2) {
+  clip: rect(250px, 500px, 500px, 250px);
+  z-index: 2;
+}
+
+.app .graph-container .graph.data-used .q:nth-of-type(3) {
+  clip: rect(250px, 250px, 500px, 0px);
+  z-index: 3;
+}
+
+.app .graph-container .graph.data-used .q:nth-of-type(4) {
+  clip: rect(0px, 250px, 250px, 0px);
+  z-index: 4;
+}
+
+.app .graph-container .graph.data-used .cover {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  width: 500px;
+  height: 500px;
+  margin-top: -251px;
+  background-color: #263344;
+  z-index: 2;
+  clip: rect(0px, 250px, 250px, 0px);
+  border-radius: 100%;
+}
+
+.app .graph-container .graph.data-used.twist {
+  animation: onload-twist-clockwise 1.2s cubic-bezier(0, 0, 0, 1);
+}
+
+.app .graph-container .graph.data-used .q {
+  background-color: cyan;
+}
+
+.app .graph-container .graph.data-used .cover {
+  background-color: #2d4556;
+}
+
+.app .graph-container .graph.days-left {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -270px;
+  margin-top: -270px;
+  width: 540px;
+  height: 540px;
+  border-radius: 100%;
+  overflow: hidden;
+  background-color: #4a3c18;
+  z-index: 3;
+  box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app .graph-container .graph.days-left .q {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -270px;
+  margin-top: -270px;
+  width: 540px;
+  height: 540px;
+  border-radius: 100%;
+  width: 540px;
+  overflow: hidden;
+  /*         T     R     B     L */
+}
+
+.app .graph-container .graph.days-left .q:nth-of-type(1) {
+  clip: rect(0px, 540px, 270px, 270px);
+  z-index: 1;
+}
+
+.app .graph-container .graph.days-left .q:nth-of-type(2) {
+  clip: rect(270px, 540px, 540px, 270px);
+  z-index: 2;
+}
+
+.app .graph-container .graph.days-left .q:nth-of-type(3) {
+  clip: rect(270px, 270px, 540px, 0px);
+  z-index: 3;
+}
+
+.app .graph-container .graph.days-left .q:nth-of-type(4) {
+  clip: rect(0px, 270px, 270px, 0px);
+  z-index: 4;
+}
+
+.app .graph-container .graph.days-left .cover {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -270px;
+  margin-top: -270px;
+  width: 540px;
+  height: 540px;
+  margin-top: -271px;
+  background-color: #263344;
+  z-index: 2;
+  clip: rect(0px, 270px, 270px, 0px);
+  border-radius: 100%;
+}
+
+.app .graph-container .graph.days-left.twist {
+  animation: onload-twist-counterclockwise 1.2s cubic-bezier(0, 0, 0, 1);
+}
+
+.app .graph-container .graph.days-left .q {
+  background-color: #fff568;
+}
+
+.app .graph-container .graph.days-left .cover {
+  background-color: #4a3c18;
+}
+
+.app .graph-container .content-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  overflow: hidden;
+  padding: 20px;
+  display: flex;
+  z-index: 15;
+}
+
+.app .graph-container .content-container .content {
+  width: 100%;
+  height: 100%;
+  background-color: #263344;
+  display: flex;
+  flex-direction: column;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 10;
+  padding: 70px 10px;
+  padding-top: 50px;
+  box-shadow: inset 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+  /*.data-used-text {
+                    color: $c-graph-data-used-fg;
+                }
+
+                .days-left-text {
+                    color: $c-graph-days-left-fg;
+                }
+
+                .data-per-day-text {
+                    color: #47ff4f;
+                }*/
+}
+
+.app .graph-container .content-container .content .container {
+  flex: 1;
+  width: 100%;
+  display: flex;
+}
+
+.app .graph-container .content-container .content .container.large {
+  flex: 2;
+}
+
+.app .graph-container .content-container .content h1 {
+  opacity: 0.5;
+  color: white;
+  margin: auto;
+}
+
+.app .graph-container .content-container .content .unit {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.app .graph-container .content-container .content .heading {
+  font-size: 128px;
+}
+
+.app .graph-container .content-container .content .heading .unit {
+  font-size: 64px;
+}
+
+.app .graph-container .content-container .content .subheading {
+  font-size: 56px;
+}
+
+.app .graph-container .content-container .content .subheading .unit {
+  font-size: 28px;
+}
+
+.app .notready-cover {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  background-color: #263344;
+  opacity: 1;
+  transition: opacity 1s;
+  pointer-events: none;
+  display: flex;
+}
+
+.app .notready-cover .notready-text {
+  margin: auto;
+  font-size: 100px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.app .notready-cover .notready-text.anim {
+  animation: fade-in-out 1s linear infinite;
+}

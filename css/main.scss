@@ -1,0 +1,220 @@
+@import '_variables.scss';
+@import '_fonts.scss';
+@import '_animations.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@mixin fixed-centered($left, $top, $width, $height) {
+    position: fixed;
+    left: $left;
+    top: $top;
+    margin-left: -($width/2);
+    margin-top: -($height/2);
+    width: $width;
+    height: $height;
+}
+
+@mixin circular-progress-bar($left,$top,$size) {
+    @include fixed-centered($left, $top, $size, $size);
+    border-radius: 100%;
+    overflow: hidden;
+
+    .q {
+        @include fixed-centered($left, $top, $size, $size);
+        border-radius: 100%;
+        width: $size;
+        overflow: hidden;
+
+        /*         T     R     B     L */
+        &:nth-of-type(1) {
+            clip: rect(0px, $size, $size/2, $size/2);
+            z-index: 1;
+        }
+        &:nth-of-type(2) {
+            clip: rect($size/2,$size,$size,$size/2);
+            z-index: 2;
+        }
+        &:nth-of-type(3) {
+            clip: rect($size/2,$size/2,$size,0px);
+            z-index: 3;
+        }
+        &:nth-of-type(4) {
+            clip: rect(0px, $size/2, $size/2, 0px);
+            z-index: 4;
+        }
+    }
+
+    .cover {
+        @include fixed-centered($left, $top, $size, $size);
+        margin-top: -($size/2) - 1;
+        background-color: $c-background;
+        z-index: 2;
+        clip: rect(0px, $size/2, $size/2, 0px);
+        border-radius: 100%;
+    }
+}
+
+.app {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    background-color: $c-background;
+
+    .graph-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        .graph {
+            &.data-used {
+                @include circular-progress-bar(50%, 50%, $graph-data-used-size);
+                background-color: $c-graph-data-used-bg;
+                z-index: 5;
+                box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+
+                &.twist {
+                    @include a-onload-twist(1);
+                }
+
+                .q {
+                    background-color: $c-graph-data-used-fg;
+                }
+
+                .cover {
+                    background-color: $c-graph-data-used-bg;
+                }
+            }
+
+            &.days-left {
+                @include circular-progress-bar(50%, 50%, $graph-days-left-size);
+                background-color: $c-graph-days-left-bg;
+                z-index: 3;
+                box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+
+                &.twist {
+                    @include a-onload-twist(-1);
+                }
+
+                .q {
+                    background-color: $c-graph-days-left-fg;
+                }
+
+                .cover {
+                    background-color: $c-graph-days-left-bg;
+                }
+            }
+        }
+
+        .content-container {
+            @include fixed-centered(50%, 50%, $graph-data-used-size, $graph-data-used-size);
+            border-radius: 100%;
+            overflow: hidden;
+            padding: 20px;
+
+            display: flex;
+            z-index: 15;
+
+
+            .content {
+                width: 100%;
+                height: 100%;
+                background-color: $c-graph-content;
+                display: flex;
+                flex-direction: column;
+                border-radius: 100%;
+                overflow: hidden;
+                z-index: 10;
+                padding: 70px 10px;
+                padding-top: 50px;
+
+                box-shadow: inset 0px 0px 13px 3px rgba(0, 0, 0, 0.3);
+
+                .container {
+                    flex: 1;
+                    width: 100%;
+                    display: flex;
+
+                    &.large {
+                        flex: 2;
+                    }
+                }
+
+                h1 {
+                    opacity: 0.5;
+                    color: white;
+                    margin: auto;
+                }
+
+                
+                .unit {
+                    color: rgba(255,255,255,0.7);
+                }
+
+                .heading {
+                    font-size: $data-heading-f-size;
+
+                    .unit {
+                        font-size: $data-heading-unit-f-size;
+                    }
+                }
+                .subheading {
+                    font-size: $data-subheading-f-size;
+
+                    .unit {
+                        font-size: $data-subheading-unit-f-size;
+                    }
+                }
+
+                /*.data-used-text {
+                    color: $c-graph-data-used-fg;
+                }
+
+                .days-left-text {
+                    color: $c-graph-days-left-fg;
+                }
+
+                .data-per-day-text {
+                    color: #47ff4f;
+                }*/
+            }
+        }
+    }
+
+    .notready-cover {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 30;
+        background-color: $c-loading;
+
+        opacity: 1;
+        transition: opacity 1s;
+
+        pointer-events: none;
+
+        display: flex;
+
+        .notready-text {
+            margin: auto;
+            font-size: 100px;
+            text-align: center;
+            color: rgba(255,255,255,0.2);
+
+            opacity: 0;
+            transition: opacity 0.2s;
+
+            &.anim {
+                @include a-fade-in-out();
+            }
+        }
+    }
+}
